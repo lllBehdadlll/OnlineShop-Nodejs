@@ -32,7 +32,10 @@ app.use(
 
 // // Flash Messages
 app.use(flash({ sessionKeyName: 'flashMessage' }));
-app.use('/', require('./server/routes/admin'))
+
+
+
+app.use('/', require('./server/routes/shop'))
 // // Templating Engine
 app.use(expressLayout);
 app.set('layout', './layouts/main');
@@ -42,8 +45,12 @@ app.set('view engine', 'ejs');
 
 app.use('/admin', require('./server/routes/admin'))
 app.use('/admin/customer', require('./server/routes/customer'))
+app.use('/admin/slider', require('./server/routes/slider'))
+
 
 // Handle 404
+
+
 app.get('*', (req, res) => {
   res.status(404).render('404');
 });

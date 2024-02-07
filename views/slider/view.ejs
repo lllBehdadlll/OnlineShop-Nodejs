@@ -1,0 +1,99 @@
+<div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2"><%= sliders.title  %></h1>
+  <div class="btn-toolbar mb-2 mb-md 0">
+    <div class="btn-group me-2">
+      <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+      <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+    </div>
+  </div>
+</div>
+
+<div class="col py-3">
+
+  <div class="row">
+    <div class="col">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin/slider/">اسلاید</a></li>
+          <li class="breadcrumb-item active"><%= sliders.Title  %></li>
+        </ol>
+      </nav>
+    </div>
+    <div class="col text-end fw-lighter">
+      <b>Last Updated <%= new Date(sliders.updatedAt).toUTCString() %> </b>
+      <b>UserId:</b> <%= sliders._id %>
+    </div>
+  </div>
+
+</div>
+
+<ul class="list-group">
+
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>عنوان:</b></div>
+      <div class="col"><%= sliders.Title %></div>
+    </div>
+  </li>
+
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>آدرس:</b></div>
+      <div class="col"><%= sliders.Picture %></div>
+    </div>
+  </li>
+
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>Picture Alt:</b></div>
+      <div class="col"><%= sliders.PictureAlt %></div>
+    </div>
+  </li>
+
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>Picture Title:</b></div>
+      <div class="col"><%= sliders.PictureTitle %></div>
+    </div>
+  </li>
+
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>متن دکمه:</b></div>
+      <div class="col"><%= sliders.BtnText %></div>
+    </div>
+  </li>
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>سرتیتر:</b></div>
+      <div class="col"><%= sliders.Heading %></div>
+    </div>
+  </li>
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>متن:</b></div>
+      <div class="col"><%= sliders.Text %></div>
+    </div>
+  </li>
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>لینک:</b></div>
+      <div class="col"><%= sliders.Link %></div>
+    </div>
+  </li>
+
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>Date Created:</b></div>
+      <div class="col"><%= sliders.createdAt %></div>
+    </div>
+  </li>
+
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>Date Modified:</b></div>
+      <div class="col"><%= sliders.updatedAt %></div>
+    </div>
+  </li>
+
+</ul>

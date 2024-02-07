@@ -1,0 +1,90 @@
+<div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">اسلایدر</h1>
+  <div class="btn-toolbar mb-2 mb-md 0">
+    <div class="btn-group me-2">
+      <button class="btn btn-sm btn-outline-secondary">?</button>
+    </div>
+  </div>
+</div>
+
+<div class="col py-3">
+  <div class="row">
+    <div class="col">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin/slider/">اسلایدر</a></li>
+          <li class="breadcrumb-item active">تصویر جدید</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="col text-end fw-lighter">
+      <b>شماره اسلاید</b>
+    </div>
+  </div>
+
+</div>
+
+
+<form action="/admin/slider/add" method="POST">
+
+  <div class="row form-group mb-4">
+    
+
+    <div class="col">
+      <label for="picturealt">Picture Alt</label>
+      <input type="text" class="form-control" id="picturealt" name="picturealt" value="" placeholder="Picture Alt" required>
+    </div>
+
+    <div class="col">
+      <label for="picture">آدرس تصویر</label>
+      <input type="text" class="form-control" id="picture" name="picture" value="" placeholder="آدرس تصویر" required>
+    </div>
+
+    
+  </div>
+
+  <div class="row form-group mb-4">
+    <div class="col">
+      <label for="picturetitle">Picture Title</label>
+      <input type="text" class="form-control" id="picturetitle" name="picturetitle" value="" placeholder="Picture Title" required>
+    </div>
+
+    <div class="col">
+      <label for="title">عنوان</label>
+      <input type="text" class="form-control" id="title" name="title" value="" placeholder=" عنوان" required>
+    </div>
+  </div>
+
+  <div class="row form-group mb-4">
+    <div class="col">
+      <label for="heading">سر تیتر</label>
+      <input type="text" class="form-control" id="heading" name="heading" value="" placeholder="سر تیتر" required>
+    </div>
+
+    <div class="col">
+      <label for="text">متن</label>
+      <input type="text" class="form-control" id="text" name="text" value="" placeholder="متن" required>
+    </div>
+  </div>
+
+  <div class="row form-group mb-4">
+    <div class="col">
+      <label for="btntext">متن دکمه</label>
+      <input type="text" class="form-control" id="btntext" name="btntext" value="" placeholder="متن دکمه" required>
+    </div>
+
+    <div class="col">
+      <label for="link">لینک</label>
+      <input type="text" class="form-control" id="link" name="link" value="" placeholder="لینک" required>
+    </div>
+  </div>
+
+
+
+  <div class="form-group mb-4">
+    <button type="submit" class="btn btn-primary">افزودن</button>
+  </div>
+
+  
+
+</form>
