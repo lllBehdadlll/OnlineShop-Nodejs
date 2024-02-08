@@ -47,6 +47,7 @@ app.use('/admin', require('./server/routes/admin'))
 app.use('/admin/customer', require('./server/routes/customer'))
 app.use('/admin/slider', require('./server/routes/slider'))
 app.use('/admin/category', require('./server/routes/category'))
+app.use('/admin/product', require('./server/routes/product'))
 
 
 // Handle 404

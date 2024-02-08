@@ -1,0 +1,87 @@
+<div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">محصول</h1>
+  <div class="btn-toolbar mb-2 mb-md 0">
+    <div class="btn-group me-2">
+      <button class="btn btn-sm btn-outline-secondary">?</button>
+    </div>
+  </div>
+</div>
+
+<div class="col py-3">
+  <div class="row">
+    <div class="col">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin/product/">محصول</a></li>
+          <li class="breadcrumb-item active">محصول جدید</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="col text-end fw-lighter">
+      <b>شماره محصول</b>
+    </div>
+  </div>
+
+</div>
+
+
+<form action="/admin/product/add" method="POST">
+
+  <div class="row form-group mb-4">
+    
+
+    <div class="col">
+      <label for="picture">آدرس تصویر</label>
+      <input type="text" class="form-control" id="picture" name="picture" value="" placeholder="آدرس تصویر  محصول" required>
+    </div>
+
+    <div class="col">
+      <label for="name">نام محصول</label>
+      <input type="text" class="form-control" id="name" name="name" value="" placeholder="نام  محصول" required>
+    </div>
+
+    
+  </div>
+  <div class="row form-group mb-4">
+    <div class="col">
+      <label for="price">قیمت</label>
+      <input type="text" class="form-control" id="price" name="price" value="" placeholder=" قیمت" required>
+    </div>
+
+    <div class="col">
+    <label for="category">دسته بندی</label>
+    <select name="category" id="category">
+      <option value="">--دسته بندی--</option>
+      <% categories.forEach(element => { %>
+        <option value="<%= element.Name %>"><%= element.Name %></option>
+        <% }) %>
+    </select>
+  </div>
+
+    </div>  
+
+  <div class="row form-group mb-4">
+    <div class="col">
+      <label for="picturealt">Picture Alt</label>
+      <input type="text" class="form-control" id="picturealt" name="picturealt" value="" placeholder="Picture Alt" required>
+    </div>
+
+    <div class="col">
+      <label for="picturetitle">Picture Title</label>
+      <input type="text" class="form-control" id="picturetitle" name="picturetitle" value="" placeholder="Picture Title" required>
+    </div>
+  </div>
+
+  <div class="form-group mb-4">
+    <label for="details"> توضیحات</label>
+    <textarea class="form-control" name="description" id="description" cols="30" rows="12" placeholder="توضیحات"></textarea>
+</div>
+
+
+  <div class="form-group mb-4">
+    <button type="submit" class="btn btn-primary">افزودن</button>
+  </div>
+
+  
+
+</form>

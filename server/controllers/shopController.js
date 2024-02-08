@@ -1,5 +1,6 @@
 const Slider = require("../models/Slider");
 const Category = require("../models/Category");
+const Product = require("../models/Product");
 
 const mongoose = require("mongoose");
 
@@ -25,6 +26,8 @@ exports.homepage = async (req, res) => {
 
       const categories = await Category.aggregate([{ $sort: { createdAt: -1 } }])
       .exec();
+      const products = await Product.aggregate([{ $sort: { createdAt: -1 } }])
+      .exec();
 
 
   
@@ -32,6 +35,7 @@ exports.homepage = async (req, res) => {
       locals,
       sliders,
       categories,
+      products,
       messages,
     });
 
