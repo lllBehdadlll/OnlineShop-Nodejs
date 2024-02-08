@@ -36,6 +36,7 @@ app.use(flash({ sessionKeyName: 'flashMessage' }));
 
 
 app.use('/', require('./server/routes/shop'))
+app.use('/productpage', require('./server/routes/productpage'))
 // // Templating Engine
 app.use(expressLayout);
 app.set('layout', './layouts/main');
@@ -48,6 +49,8 @@ app.use('/admin/customer', require('./server/routes/customer'))
 app.use('/admin/slider', require('./server/routes/slider'))
 app.use('/admin/category', require('./server/routes/category'))
 app.use('/admin/product', require('./server/routes/product'))
+app.use('/admin/productslider', require('./server/routes/productslider'))
+
 
 
 // Handle 404

@@ -51,7 +51,7 @@
     <div class="col">
       <label for="category">دسته بندی</label>
       <select name="category" id="category">
-        <option value="">--دسته بندی--</option>
+        <option value="<%= product.Category %>"><%= product.Category %></option>
         <% categories.forEach(element => { %>
           <option value="<%= element.Name %>"><%= element.Name %></option>
           <% }) %>

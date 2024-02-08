@@ -21,24 +21,16 @@ exports.homepage = async (req, res) => {
 
 
     try {
-
-      const sliders = await Slider.aggregate([{ $sort: { createdAt: -1 } }])
-      .exec();
-
+      const products = await Product.findOne({ _id: req.params.id });
       const categories = await Category.aggregate([{ $sort: { createdAt: -1 } }])
       .exec();
-      const products = await Product.aggregate([{ $sort: { createdAt: -1 } }])
-      .exec();
-      const productsliders = await Productslider.aggregate([{ $sort: { createdAt: -1 } }])
-      .exec();
+
 
   
-        res.render("index", {
+        res.render("productpage", {
       locals,
-      sliders,
       categories,
       products,
-      productsliders,
       messages,
     });
 
@@ -48,4 +40,7 @@ exports.homepage = async (req, res) => {
     }
 
   };
+
+
+
 

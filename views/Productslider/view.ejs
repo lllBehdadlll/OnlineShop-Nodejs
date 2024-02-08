@@ -1,0 +1,67 @@
+<div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2"><%= productslider.Name  %></h1>
+  <div class="btn-toolbar mb-2 mb-md 0">
+
+  </div>
+</div>
+
+<div class="col py-3">
+
+  <div class="row">
+    <div class="col">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin/productslider/">دسته بندی</a></li>
+          <li class="breadcrumb-item active"><%= productslider.Name  %></li>
+        </ol>
+      </nav>
+    </div>
+    <div class="col text-end fw-lighter">
+      <b>Last Updated <%= new Date(productslider.updatedAt).toUTCString() %> </b>
+      <b>UserId:</b> <%= productslider._id %>
+    </div>
+  </div>
+
+</div>
+
+<ul class="list-group">
+
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>عنوان:</b></div>
+      <div class="col"><%= productslider.Name %></div>
+    </div>
+  </li>
+
+
+
+
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>توضیحات</b></div>
+      <div class="col"><%= productslider.Description %></div>
+    </div>
+  </li>
+
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>توضیحات</b></div>
+      <div class="col"><%= productslider.Category %></div>
+    </div>
+  </li>
+
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>تاریخ ایجاد:</b></div>
+      <div class="col"><%= productslider.createdAt %></div>
+    </div>
+  </li>
+
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>آخرین اپدیت:</b></div>
+      <div class="col"><%= productslider.updatedAt %></div>
+    </div>
+  </li>
+
+</ul>
