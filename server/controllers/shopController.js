@@ -2,6 +2,7 @@ const Slider = require("../models/Slider");
 const Category = require("../models/Category");
 const Product = require("../models/Product");
 const Productslider = require("../models/Productslider");
+const Newsletter = require("../models/Newsletter");
 
 const mongoose = require("mongoose");
 
@@ -49,3 +50,24 @@ exports.homepage = async (req, res) => {
 
   };
 
+  exports.postNewsletter = async (req, res) => {
+    console.log(req.body);
+
+
+    const newNewsletter = new Newsletter({
+        Email: req.body.email,
+      });
+
+      try {
+        await Newsletter.create(newNewsletter);
+        
+    
+        res.redirect("/");
+      } catch (error) {
+        console.log(error);
+      }
+  
+
+
+
+  };

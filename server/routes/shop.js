@@ -6,7 +6,7 @@ const shopController = require('../controllers/shopController');
 router.get('/', shopController.homepage);
 // router.get('/about', customerController.about);
 // router.get('/add', customerController.addCustomer);
-// router.post('/add', customerController.postCustomer);
+ router.post('/', shopController.postNewsletter);
 // router.get('/view/:id', customerController.view);
 // router.get('/edit/:id', customerController.edit);
 // router.put('/edit/:id', customerController.editPost);
