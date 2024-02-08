@@ -1,8 +1,8 @@
 <div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">اسلایدر</h1>
+    <h1 class="h2">دسته بندی</h1>
     <div class="btn-toolbar mb-2 mb-md 0">
       <div class="btn-group me-2">
-        <a href="/admin/slider/add" class="btn btn-sm btn-outline-secondary">افرودن تصویر</a>
+        <a href="/admin/category/add" class="btn btn-sm btn-outline-secondary">افرودن دسته بندی</a>
       </div>
     </div>
   </div>
@@ -20,34 +20,30 @@
     <table class="table table-striped table-sm">
       <thead>
         <tr>
-          <th scope="col">عنوان</th>
+          <th scope="col">نام</th>
           <th scope="col">عکس</th>
-          <th scope="col">متن</th>
-          <th scope="col">متن دکمه</th>
           <th scope="col" class="text-end">عملیات های مدیریتی</th>
         </tr>
       </thead>
   
       <tbody>
-        <% sliders.forEach(element => { %>
+        <% category.forEach(element => { %>
           <tr class="align-middle">
-            <td><%= element.Title %></td>
-            <td><img src="<%= element.Picture %>" width="150px" height="100px"></td>
-            <td><%= element.Text %></td>
-            <td><%= element.BtnText %></td>
+            <td><%= element.Name %></td>
+            <td><img src="<%= element.Picture %>" width="100px" height="100px"></td>
             <td class="text-end">
   
               <div class="d-flex flex-row justify-content-end gap-2">
   
-                <a href="/admin/slider/view/<%= element._id %>" type="button" class="btn btn-primary btn-small">
+                <a href="/admin/category/view/<%= element._id %>" type="button" class="btn btn-primary btn-small">
                   <i class="bi bi-eye"></i>
                 </a>
   
-                <a href="/admin/slider/edit/<%= element._id %>" type="button" class="btn btn-warning btn-small">
+                <a href="/admin/category/edit/<%= element._id %>" type="button" class="btn btn-warning btn-small">
                   <i class="bi bi-pencil"></i>
                 </a>
   
-                <form action="/admin/slider/edit/<%= element._id %>?_method=DELETE" method="POST" class="position-relative">
+                <form action="/admin/category/edit/<%= element._id %>?_method=DELETE" method="POST" class="position-relative">
                   <button type="submit" class="btn btn-danger btn-small">
                     <i class="bi bi-person-x"></i>
                   </button>
@@ -65,7 +61,7 @@
 
 
 
-  <% if (sliders.length > 0) { %>
+  <% if (category.length > 0) { %>
     <nav aria-label="Dashboard Pagination">
       <ul class="pagination justify-content-center mt-5">
   

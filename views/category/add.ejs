@@ -1,0 +1,65 @@
+<div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">دسته بندی</h1>
+  <div class="btn-toolbar mb-2 mb-md 0">
+    <div class="btn-group me-2">
+      <button class="btn btn-sm btn-outline-secondary">?</button>
+    </div>
+  </div>
+</div>
+
+<div class="col py-3">
+  <div class="row">
+    <div class="col">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin/category/">دسته بندی</a></li>
+          <li class="breadcrumb-item active">دسته بندی جدید</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="col text-end fw-lighter">
+      <b>شماره دسته</b>
+    </div>
+  </div>
+
+</div>
+
+
+<form action="/admin/category/add" method="POST">
+
+  <div class="row form-group mb-4">
+    
+
+    <div class="col">
+      <label for="picture">آدرس تصویر</label>
+      <input type="text" class="form-control" id="picture" name="picture" value="" placeholder="آدرس تصویر دسته بندی" required>
+    </div>
+
+    <div class="col">
+      <label for="name">نام دسته</label>
+      <input type="text" class="form-control" id="name" name="name" value="" placeholder="نام دسته بندی" required>
+    </div>
+
+    
+  </div>
+
+  <div class="row form-group mb-4">
+    <div class="col">
+      <label for="picturealt">Picture Alt</label>
+      <input type="text" class="form-control" id="picturealt" name="picturealt" value="" placeholder="Picture Alt" required>
+    </div>
+
+    <div class="col">
+      <label for="picturetitle">Picture Title</label>
+      <input type="text" class="form-control" id="picturetitle" name="picturetitle" value="" placeholder="Picture Title" required>
+    </div>
+  </div>
+
+
+  <div class="form-group mb-4">
+    <button type="submit" class="btn btn-primary">افزودن</button>
+  </div>
+
+  
+
+</form>

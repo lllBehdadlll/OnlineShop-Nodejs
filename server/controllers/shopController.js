@@ -1,4 +1,6 @@
 const Slider = require("../models/Slider");
+const Category = require("../models/Category");
+
 const mongoose = require("mongoose");
 
 
@@ -21,12 +23,15 @@ exports.homepage = async (req, res) => {
       const sliders = await Slider.aggregate([{ $sort: { createdAt: -1 } }])
       .exec();
 
+      const categories = await Category.aggregate([{ $sort: { createdAt: -1 } }])
+      .exec();
 
-      const count = await Slider.countDocuments({});
+
   
         res.render("index", {
       locals,
       sliders,
+      categories,
       messages,
     });
 

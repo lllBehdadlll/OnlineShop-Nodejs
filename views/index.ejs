@@ -33,54 +33,22 @@
                             <nav>
                                 <ul>
                                     <li>
-                                        <a href="index.html">HOME</a>
+                                        <a href="#">صفحه اصلی</a>
                                     </li>
 
                                     <li class="menu-item-has-children">
-                                        <a href="#">PAGES</a>
+                                        <a href="#">محصولات</a>
                                         <ul class="sub-menu">
-                                            <li class="menu-item-has-children">
-                                                <a href="#">Page List One</a>
-                                                <ul class="sub-menu">
-                                                    <li>
-                                                        <a href="cart.html">Cart</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="checkout.html">Checkout</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="wishlist.html">Wishlist</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="menu-item-has-children">
-                                                <a href="#">page list two</a>
-                                                <ul class="sub-menu">
-                                                    <li>
-                                                        <a href="my-account.html">My Account</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="login-register.html">Login Register</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="faq.html">FAQ</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="menu-item-has-children">
-                                                <a href="#">Page list three</a>
-                                                <ul class="sub-menu">
-                                                    <li>
-                                                        <a href="compare.html">Compare</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="contact.html">Contact</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="about.html">About Us</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
+                                            <% categories.forEach(element => { %>
+                                            
+                                                <li>
+                                                    <a href="#" ><%= element.Name %></a>
+                                                </li>
+            
+                                                <% }) %>
+                                            
+                                         
+                                           
                                         </ul>
                                     </li>
 
@@ -396,70 +364,31 @@
                     <!--=======  category wrapper  =======-->
                     <div class="category-wrapper">
                         <div class="row row-10 masonry-category-layout">
-                            <div class="col-lg-4 col-sm-6 grid-item">
-                                <!--=======  single category item  =======-->
-                                <div class="single-category-item">
-                                    <div class="single-category-item__image">
-                                        <a asp-page="/ProductCategory">
-                                            <img src="assets/img/category/img1-top-eposi1.jpg" class="img-fluid" alt="">
-                                        </a>
+    
+                            <% categories.forEach(element => { %>
+                            
+                                <div class="col-lg-4 col-sm-6 grid-item">
+                                    <!--=======  single category item  =======-->
+    
+                                    <div class="single-category-item">
+                                        <div class="single-category-item__image">
+                                            <a href="#">
+                                                <img src="<%= element.Picture %>" class="img-fluid" alt="<%= element.PictureAlt %>" title="<%= element.PictureTitle %>">
+                                            </a>
+                                        </div>
+                                        <div class="single-category-item__content">
+                                            <h3 class="title"><%= element.Name %></h3>
+                                            <a href="#">
+                                                <i class="ion-android-arrow-dropleft-circle"></i> خرید
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div class="single-category-item__content">
-                                        <h3 class="title">Storage</h3>
-                                        <a href="shop-left-sidebar.html"><i
-                                                class="ion-android-arrow-dropleft-circle"></i> Shop Now</a>
-                                    </div>
+                                    <!--=======  End of single category item  =======-->
                                 </div>
-                                <!--=======  End of single category item  =======-->
-                            </div>
-                            <div class="col-lg-4 col-sm-6 grid-item">
-                                <!--=======  single category item  =======-->
-                                <div class="single-category-item">
-                                    <div class="single-category-item__image">
-                                        <a href="shop-left-sidebar.html">
-                                            <img src="assets/img/category/img2-top-eposi1.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="single-category-item__content">
-                                        <h3 class="title">Lighting</h3>
-                                        <a href="shop-left-sidebar.html"><i
-                                                class="ion-android-arrow-dropleft-circle"></i> Shop Now</a>
-                                    </div>
-                                </div>
-                                <!--=======  End of single category item  =======-->
-                            </div>
-                            <div class="col-lg-4 col-sm-6 grid-item">
-                                <!--=======  single category item  =======-->
-                                <div class="single-category-item">
-                                    <div class="single-category-item__image">
-                                        <a href="shop-left-sidebar.html">
-                                            <img src="assets/img/category/img3-top-eposi1.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="single-category-item__content">
-                                        <h3 class="title">Decoration</h3>
-                                        <a href="shop-left-sidebar.html"><i
-                                                class="ion-android-arrow-dropleft-circle"></i> Shop Now</a>
-                                    </div>
-                                </div>
-                                <!--=======  End of single category item  =======-->
-                            </div>
-                            <div class="col-lg-4 col-sm-6 grid-item">
-                                <!--=======  single category item  =======-->
-                                <div class="single-category-item">
-                                    <div class="single-category-item__image">
-                                        <a href="shop-left-sidebar.html">
-                                            <img src="assets/img/category/img4-top-eposi1.jpg" class="img-fluid" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="single-category-item__content">
-                                        <h3 class="title">Living Room</h3>
-                                        <a href="shop-left-sidebar.html"><i
-                                                class="ion-android-arrow-dropleft-circle"></i> Shop Now</a>
-                                    </div>
-                                </div>
-                                <!--=======  End of single category item  =======-->
-                            </div>
+                                <% }) %>
+                           
+    
+    
                         </div>
                     </div>
                     <!--=======  End of category wrapper  =======-->
@@ -2273,133 +2202,23 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="menu-item-has-children">
-                            <a href="#">Pages</a>
-                            <ul class="sub-menu">
-                                <li class="menu-item-has-children">
-                                    <a href="#">Page List One</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="cart.html">Cart</a>
-                                        </li>
-                                        <li>
-                                            <a href="checkout.html">Checkout</a>
-                                        </li>
-                                        <li>
-                                            <a href="wishlist.html">Wishlist</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Page List Two</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="my-account.html">My Account</a>
-                                        </li>
-                                        <li>
-                                            <a href="login-register.html">Login Register</a>
-                                        </li>
-                                        <li>
-                                            <a href="faq.html">FAQ</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Page List Three</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="compare.html">Compare</a>
-                                        </li>
-                                        <li>
-                                            <a href="contact.html">Contact</a>
-                                        </li>
-                                        <li>
-                                            <a href="about.html">About Us</a>
-                                        </li>
-                                    </ul>
-                                </li>
 
-                            </ul>
-                        </li>
                         <li class="menu-item-has-children">
-                            <a href="#">Shop</a>
+                            <a href="#">محصولات</a>
                             <ul class="sub-menu">
-                                <li class="menu-item-has-children">
-                                    <a href="#">Shop Grid</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="shop-3-column.html">shop 3 column</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-4-column.html">shop 4 column</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-left-sidebar.html">shop left sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-right-sidebar.html">shop right sidebar</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Shop List</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="shop-list.html">shop List</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-list-left-sidebar.html">shop List Left Sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-list-right-sidebar.html">shop List Right Sidebar</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Single Product One</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="single-product.html">Single Product</a>
-                                        </li>
-                                        <li>
-                                            <a href="single-product-variable.html">Single Product variable</a>
-                                        </li>
-                                        <li>
-                                            <a href="single-product-affiliate.html">Single Product affiliate</a>
-                                        </li>
-                                        <li>
-                                            <a href="single-product-group.html">Single Product group</a>
-                                        </li>
-                                        <li>
-                                            <a href="single-product-tabstyle-2.html">Tab Style 2</a>
-                                        </li>
-                                        <li>
-                                            <a href="single-product-tabstyle-3.html">Tab Style 3</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Single Product Two</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="single-product-gallery-left.html">Gallery Left</a>
-                                        </li>
-                                        <li>
-                                            <a href="single-product-gallery-right.html">Gallery Right</a>
-                                        </li>
-                                        <li>
-                                            <a href="single-product-sticky-left.html">Sticky Left</a>
-                                        </li>
-                                        <li>
-                                            <a href="single-product-sticky-right.html">Sticky Right</a>
-                                        </li>
-                                        <li>
-                                            <a href="single-product-slider-box.html">Slider Box</a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                <% categories.forEach(element => { %>
+                                
+                                    <li>
+                                        <a href="#" ><%= element.Name %></a>
+                                    </li>
+
+                                    <% }) %>
+                                
+                             
+                               
                             </ul>
                         </li>
+\
                         <li class="menu-item-has-children">
                             <a href="#">Blog</a>
                             <ul class="sub-menu">
