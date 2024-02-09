@@ -1,9 +1,6 @@
 <div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <h1 class="h2">Editing: <%= productslider.Name %></h1>
   <div class="btn-toolbar mb-2 mb-md 0">
-    <div class="btn-group me-2">
-      <button class="btn btn-sm btn-outline-secondary">?</button>
-    </div>
   </div>
 </div>
 
@@ -48,7 +45,7 @@
 
       <div class="col">
         <label for="category">دسته بندی</label>
-        <select name="category" id="category">
+        <select name="category" id="category" class="form-select">
           <option value="<%= productslider.Category %>"><%= productslider.Category %></option>
           <% categories.forEach(element => { %>
             <option value="<%= element.Name %>"><%= element.Name %></option>

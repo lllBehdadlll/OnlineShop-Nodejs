@@ -1,9 +1,6 @@
 <div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <h1 class="h2">Editing: <%= sliders.Title %></h1>
   <div class="btn-toolbar mb-2 mb-md 0">
-    <div class="btn-group me-2">
-      <button class="btn btn-sm btn-outline-secondary">?</button>
-    </div>
   </div>
 </div>
 
@@ -18,8 +15,8 @@
       </nav>
     </div>
     <div class="col text-end fw-lighter">
-      <b>Last Updated: <%= new Date(sliders.updatedAt).toUTCString()  %></b>
-      <b>UserId:</b> <%= sliders._id %>
+      <b>آخرین آپدیت: <%= new Date(sliders.updatedAt).toUTCString()  %></b>
+      <b>شماره تصویر:</b> <%= sliders._id %>
     </div>
   </div>
 
@@ -32,17 +29,17 @@
   
 
 
-    <div class="col">
-      <label for="picturealt">Picture Alt</label>
-      <input type="text" class="form-control" id="picturealt" name="picturealt" value="<%= sliders.PictureAlt %>" placeholder="Picture Alt" required>
-    </div>
+ 
 
     <div class="col">
       <label for="picture">آدرس تصویر</label>
       <input type="text" class="form-control" id="picture" name="picture" value="<%= sliders.Picture %>" placeholder="آدرس تصویر" required>
     </div>
 
-    
+    <div class="col">
+      <label for="title">عنوان</label>
+      <input type="text" class="form-control" id="title" name="title" value="<%= sliders.Title %>" placeholder=" عنوان" required>
+    </div>
   </div>
 
   <div class="row form-group mb-4">
@@ -52,8 +49,8 @@
     </div>
 
     <div class="col">
-      <label for="title">عنوان</label>
-      <input type="text" class="form-control" id="title" name="title" value="<%= sliders.Title %>" placeholder=" عنوان" required>
+      <label for="picturealt">Picture Alt</label>
+      <input type="text" class="form-control" id="picturealt" name="picturealt" value="<%= sliders.PictureAlt %>" placeholder="Picture Alt" required>
     </div>
   </div>
 
@@ -90,9 +87,9 @@
 
 
   <div class="form-group mb-4">
-    <button type="submit" class="btn btn-primary">Update Customer</button>
+    <button type="submit" class="btn btn-primary">آپدیت اسلایدر</button>
 
-    <button type="button" class="btn btn-danger" data-bs-toggle="modal" id="deleteButton" data-bs-target="#deleteModal">Delete Customer</button>
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" id="deleteButton" data-bs-target="#deleteModal">حذف اسلاید</button>
 
   </div>
 
@@ -104,19 +101,19 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <div class="modal-title">You are about to remove a customer record.</div>
+        <div class="modal-title">شما در حال حذف این تصویر هستید</div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <p>
-          This will remove the customer record of <b class="fw-bold"><%= sliders.Title %> </b><br/>
-          Are you sure?
+          این اقدام منجر به پاک شدن  <b class="fw-bold"><%= sliders.Title %> میشود</b><br/>
+          مطمئن هستید؟
         </p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
         <form action="/admin/slider/edit/<%= sliders._id %>?_method=DELETE" method="POST" class="position-relative">
-          <button type="submit" class="btn btn-primary">Yes, Remove Pic</button>
+          <button type="submit" class="btn btn-primary">بله، پاک شود</button>
         </form>
       </div>
     </div>

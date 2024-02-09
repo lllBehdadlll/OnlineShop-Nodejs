@@ -44,7 +44,7 @@ exports.homepage = async (req, res) => {
 
 
 
-  //Get new customer form
+  //Get new category form
 
   exports.addCategory = async (req, res) => {
 
@@ -61,7 +61,7 @@ exports.homepage = async (req, res) => {
   };
 
   
-  //Post  create new customer
+  //Post  create new category
 
   exports.postCategory = async (req, res) => {
     console.log(req.body);
@@ -76,7 +76,7 @@ exports.homepage = async (req, res) => {
 
       try {
         await Category.create(newCategory);
-        await req.flash("info", "New category has been added.");
+        await req.flash("info", "دسته بندی جدید با موفقیت افزوده شد!");
     
         res.redirect("/admin/category/");
       } catch (error) {
@@ -96,8 +96,8 @@ exports.homepage = async (req, res) => {
       const category = await Category.findOne({ _id: req.params.id });
   
       const locals = {
-        title: "View category Data",
-        description: "Free NodeJs User Management System",
+        title: 'IE Project',
+        description: 'NodeJs project'
       };
   
       res.render("category/view", {
@@ -120,8 +120,8 @@ exports.edit = async (req, res) => {
     const category = await Category.findOne({ _id: req.params.id });
 
     const locals = {
-      title: "Edit category Data",
-      description: "Free NodeJs User Management System",
+      title: 'IE Project',
+        description: 'NodeJs project'
     };
 
     res.render("category/edit", {
@@ -135,7 +135,7 @@ exports.edit = async (req, res) => {
 
 /**
  * GET /
- * Update Customer Data
+ * Update category Data
  */
 exports.editPost = async (req, res) => {
   try {
@@ -147,7 +147,6 @@ exports.editPost = async (req, res) => {
       updatedAt: Date.now(),
     });
     await res.redirect("/admin/category/");
-    // await res.redirect(`/edit/${req.params.id}`);
 
     console.log("redirected");
   } catch (error) {
@@ -160,6 +159,7 @@ exports.editPost = async (req, res) => {
 exports.deleteCategory = async (req, res) => {
   try {
     await Category.deleteOne({ _id: req.params.id });
+    await req.flash("info", "دسته بندی با موفقیت حذف شد!");
     res.redirect("/admin/category/");
   } catch (error) {
     console.log(error);
@@ -170,27 +170,20 @@ exports.deleteCategory = async (req, res) => {
 
 /**
  * Get /
- * Search Customer Data
+ * Search category Data
  */
 exports.searchCategory = async (req, res) => {
   const locals = {
-    title: "Search category Data",
-    description: "Free NodeJs User Management System",
+    title: "جستجو",
+    description: 'NodeJs project'
   };
 
   try {
-    let searchTerm = req.body.searchTerm;
-    const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "");
+    let searchTerm = req.body.searchTerm;  
+    const product = await Category.find({ Name: searchTerm });
 
-    const category = await Category.find({
-      $or: [
-        { firstName: { $regex: new RegExp(searchNoSpecialChar, "i") } },
-        { lastName: { $regex: new RegExp(searchNoSpecialChar, "i") } },
-      ],
-    });
-
-    res.render("search", {
-      category,
+    res.render("category/search", {
+      product,
       locals,
     });
   } catch (error) {

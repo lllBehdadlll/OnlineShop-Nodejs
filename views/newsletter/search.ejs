@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">جستجو</h1>
+  <div class="btn-toolbar mb-2 mb-md 0">
+
+  </div>
+</div>
+
+<div class="table-responsive">
+  <% if (newsletter != "") { %>
+  
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+
+          <th scope="col">ایمیل</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <% customers.forEach(element => { %>
+          <tr class="align-middle">
+            <td><%= element.Email %></td>
+            <td>
+
+              <div class="d-flex flex-row justify-content-end gap-2">
+
+  
+                <form action="/admin/newsletter/edit/<%= element._id %>?_method=DELETE" method="POST" class="position-relative">
+                  <button type="submit" class="btn btn-danger btn-small">
+                    <i class="bi bi-person-x"></i>
+                  </button>
+                </form>
+  
+              </div>
+
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+  <% } else { %>
+    <h2>نتیجه ای یافت نشد</h2>
+  <% } %>
+
+</div>

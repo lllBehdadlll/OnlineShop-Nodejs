@@ -1,9 +1,6 @@
 <div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <h1 class="h2">اسلایدر</h1>
   <div class="btn-toolbar mb-2 mb-md 0">
-    <div class="btn-group me-2">
-      <button class="btn btn-sm btn-outline-secondary">?</button>
-    </div>
   </div>
 </div>
 
@@ -17,9 +14,6 @@
         </ol>
       </nav>
     </div>
-    <div class="col text-end fw-lighter">
-      <b>شماره اسلایدر</b>
-    </div>
   </div>
 
 </div>
@@ -30,31 +24,34 @@
   <div class="row form-group mb-4">
     
 
+ 
+
+   
+    <div class="col">
+      <label for="category">دسته بندی</label>
+      <select name="category" id="category" class="form-select">
+        <option value="">--دسته بندی--</option>
+        <% categories.forEach(element => { %>
+          <option value="<%= element.Name %>"><%= element.Name %></option>
+          <% }) %>
+      </select>
+    </div>
+
     <div class="col">
       <label for="name">عنوان</label>
       <input type="text" class="form-control" id="name" name="name" value="" placeholder="عنوان" required>
     </div>
 
-   
-      <div class="col">
-        <label for="description"> توضیحات</label>
-        <input type="text" class="form-control" id="description" name="description" value="" placeholder="توضیحات" required>
-      </div>
+  </div>
 
+  <div class="row form-group mb-4">
+  <div class="col">
+    <label for="description"> توضیحات</label>
+    <input type="text" class="form-control" id="description" name="description" value="" placeholder="توضیحات" required>
   </div>
 
 
-
-      <div class="col">
-        <label for="category">دسته بندی</label>
-        <select name="category" id="category">
-          <option value="">--دسته بندی--</option>
-          <% categories.forEach(element => { %>
-            <option value="<%= element.Name %>"><%= element.Name %></option>
-            <% }) %>
-        </select>
-      </div>
-
+</div>
 
 
 

@@ -286,7 +286,7 @@
                 <nav class="offcanvas-navigation">
                     <ul>
                         <li class="menu-item-has-children">
-                            <a href="#">صفحه اصلی</a>
+                            <a href="/">صفحه اصلی</a>
                             
                         </li>
 
@@ -296,7 +296,7 @@
                                 <% categories.forEach(element => { %>
                                 
                                     <li>
-                                        <a href="#" ><%= element.Name %></a>
+                                        <a href="/categorypage/<%= element._id %>" ><%= element.Name %></a>
                                     </li>
 
                                     <% }) %>
@@ -304,6 +304,11 @@
                              
                                
                             </ul>
+                        </li>
+
+
+                        <li>
+                            <a href="/admin">پنل مدیریت</a>
                         </li>
 
 
@@ -348,7 +353,7 @@
     </div>
 
 
-    </div>
+   
 
 
     <!-- scroll to top  -->

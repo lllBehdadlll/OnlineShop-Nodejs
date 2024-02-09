@@ -9,6 +9,7 @@ router.delete('/edit/:id', newsletterController.deleteNewsletter);
 router.post('/search', newsletterController.searchNewsletter);
 router.get('/sendtoall', newsletterController.sendtoall);
 router.post('/sendtoall', newsletterController.postSendtoall);
+router.post('/search', newsletterController.searchNewsletter);
 
 
 

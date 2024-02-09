@@ -51,7 +51,7 @@ exports.homepage = async (req, res) => {
 
     const local ={
   
-        title: 'افزودن کاربر',
+        title: 'افزودن اسلایدر',
         description: 'NodeJs project'
     }
   
@@ -81,7 +81,7 @@ exports.homepage = async (req, res) => {
 
       try {
         await Slider.create(newSlider);
-        await req.flash("info", "New Slider has been added.");
+        await req.flash("info", "اسلاید جدید با موفقیت افزوده شد!");
     
         res.redirect("/admin/slider/");
       } catch (error) {
@@ -102,7 +102,7 @@ exports.homepage = async (req, res) => {
   
       const locals = {
         title: "View Slider Data",
-        description: "Free NodeJs User Management System",
+        description: 'NodeJs project'
       };
   
       res.render("slider/view", {
@@ -126,7 +126,7 @@ exports.edit = async (req, res) => {
 
     const locals = {
       title: "Edit Slider Data",
-      description: "Free NodeJs User Management System",
+      description: 'NodeJs project'
     };
 
     res.render("slider/edit", {
@@ -155,6 +155,7 @@ exports.editPost = async (req, res) => {
         Link: req.body.link,
         updatedAt: Date.now(),
     });
+    await req.flash("info", "اسلایدر با موفقیت آپدیت شد!");
     await res.redirect("/admin/slider/");
 
     console.log("redirected");
@@ -168,6 +169,7 @@ exports.editPost = async (req, res) => {
 exports.deleteSlider = async (req, res) => {
   try {
     await Slider.deleteOne({ _id: req.params.id });
+    await req.flash("info", "اسلاید با موفقیت حذف شد!");
     res.redirect("/admin/slider/");
   } catch (error) {
     console.log(error);
@@ -180,25 +182,18 @@ exports.deleteSlider = async (req, res) => {
  * Get /
  * Search Slider Data
  */
-exports.searchSliders = async (req, res) => {
+exports.searchSlider = async (req, res) => {
   const locals = {
-    title: "Search Slider Data",
-    description: "Free NodeJs User Management System",
+    title: "جستجو",
+    description: 'NodeJs project'
   };
 
   try {
-    let searchTerm = req.body.searchTerm;
-    const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "");
+    let searchTerm = req.body.searchTerm;  
+    const slider = await Slider.find({ Name: searchTerm });
 
-    const sliders = await Slider.find({
-      $or: [
-        { firstName: { $regex: new RegExp(searchNoSpecialChar, "i") } },
-        { lastName: { $regex: new RegExp(searchNoSpecialChar, "i") } },
-      ],
-    });
-
-    res.render("search", {
-      sliders,
+    res.render("slider/search", {
+      slider,
       locals,
     });
   } catch (error) {

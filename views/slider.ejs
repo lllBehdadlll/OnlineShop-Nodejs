@@ -2,7 +2,7 @@
     <h1 class="h2">اسلایدر</h1>
     <div class="btn-toolbar mb-2 mb-md 0">
       <div class="btn-group me-2">
-        <a href="/admin/slider/add" class="btn btn-sm btn-outline-secondary">افرودن تصویر</a>
+        <a href="/admin/slider/add" class="btn btn-sm btn btn-success">افرودن تصویر</a>
       </div>
     </div>
   </div>
@@ -70,9 +70,9 @@
       <ul class="pagination justify-content-center mt-5">
   
         <% if (current == 1) { %>
-          <li class="page-item disabled"><a href="#" class="page-link">First</a></li>
+          <li class="page-item disabled"><a href="#" class="page-link">ابتدا</a></li>
         <% } else { %>
-          <li class="page-item"><a href="/?page=1" class="page-link">First</a></li>
+          <li class="page-item"><a href="/admin/slider/?page=1" class="page-link">ابتدا</a></li>
         <% } %>
   
         <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
@@ -84,7 +84,7 @@
           <% if (i == current) { %>
             <li class="page-item disabled"><a href="#" class="page-link"><%= i %></a></li>
           <% } else { %>
-            <li class="page-item"><a href="/?page=<%= i %>" class="page-link"><%= i %></a></li>
+            <li class="page-item"><a href="/admin/slider/?page=<%= i %>" class="page-link"><%= i %></a></li>
           <% } %>
           <% if (i == Number(current) + 4 && i < pages) { %>
             <li class="page-item disabled"><a href="#" class="page-link">...</a></li>
@@ -92,9 +92,9 @@
         <% } %>
   
         <% if (current == pages) { %>
-          <li class="page-item disabled"><a href="#" class="page-link">Last</a></li>
+          <li class="page-item disabled"><a href="#" class="page-link">انتها</a></li>
         <% } else { %>
-          <li class="page-item"><a href="/?page=<%= pages %>" class="page-link">Last</a></li>
+          <li class="page-item"><a href="/admin/slider/?page=<%= pages %>" class="page-link">انتها</a></li>
         <% } %>
   
       </ul>

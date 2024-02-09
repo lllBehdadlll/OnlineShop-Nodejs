@@ -10,7 +10,7 @@ router.get('/view/:id', sliderController.view);
 router.get('/edit/:id', sliderController.edit);
 router.put('/edit/:id', sliderController.editPost);
 router.delete('/edit/:id', sliderController.deleteSlider);
-router.post('/search', sliderController.searchSliders);
+router.post('/search', sliderController.searchSlider);
 
 
 

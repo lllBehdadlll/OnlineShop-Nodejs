@@ -77,7 +77,7 @@ exports.homepage = async (req, res) => {
 
       try {
         await Customer.create(newCustomer);
-        await req.flash("info", "New customer has been added.");
+        await req.flash("info", "کاربر جدید افزوده شد");
     
         res.redirect("/admin/customer/");
       } catch (error) {
@@ -97,8 +97,8 @@ exports.homepage = async (req, res) => {
       const customer = await Customer.findOne({ _id: req.params.id });
   
       const locals = {
-        title: "View Customer Data",
-        description: "Free NodeJs User Management System",
+        title: 'IE Project',
+        description: 'NodeJs project'
       };
   
       res.render("customer/view", {
@@ -121,8 +121,8 @@ exports.edit = async (req, res) => {
     const customer = await Customer.findOne({ _id: req.params.id });
 
     const locals = {
-      title: "Edit Customer Data",
-      description: "Free NodeJs User Management System",
+      title: 'IE Project',
+        description: 'NodeJs project'
     };
 
     res.render("customer/edit", {
@@ -148,6 +148,7 @@ exports.editPost = async (req, res) => {
       details: req.body.details,
       updatedAt: Date.now(),
     });
+    await req.flash("info", "کاربر  بروزرسانی شد");
     await res.redirect("/admin/customer/");
     // await res.redirect(`/edit/${req.params.id}`);
 
@@ -162,6 +163,7 @@ exports.editPost = async (req, res) => {
 exports.deleteCustomer = async (req, res) => {
   try {
     await Customer.deleteOne({ _id: req.params.id });
+    await req.flash("info", "کاربر حذف شد");
     res.redirect("/admin/customer/");
   } catch (error) {
     console.log(error);
@@ -174,42 +176,23 @@ exports.deleteCustomer = async (req, res) => {
  * Get /
  * Search Customer Data
  */
+
 exports.searchCustomers = async (req, res) => {
-  const locals = {
-    title: "Search Customer Data",
-    description: "Free NodeJs User Management System",
+    const locals = {
+      title: 'IE Project',
+        description: 'NodeJs project'
+    };
+  
+    try {
+      let searchTerm = req.body.searchTerm;  
+      const customers = await Customer.find({ firstName: searchTerm });
+  
+      res.render("customer/search", {
+        customers,
+        locals,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  try {
-    let searchTerm = req.body.searchTerm;
-    const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "");
-
-    const customers = await Customer.find({
-      $or: [
-        { firstName: { $regex: new RegExp(searchNoSpecialChar, "i") } },
-        { lastName: { $regex: new RegExp(searchNoSpecialChar, "i") } },
-      ],
-    });
-
-    res.render("search", {
-      customers,
-      locals,
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-
-exports.about = async (req, res) => {
-  const locals = {
-    title: "درباره",
-    description: "پروژه درس مهندسی اینترنت",
-  };
-
-  try {
-    res.render("about", locals);
-  } catch (error) {
-    console.log(error);
-  }
-};

@@ -15,7 +15,7 @@ exports.homepage = async (req, res) => {
         description: 'NodeJs project'
     }
   
-    let perPage = 5;
+    let perPage = 10;
     let page = req.query.page || 1;
 
     try {
@@ -45,7 +45,7 @@ exports.homepage = async (req, res) => {
 
 
 
-  //Get new customer form
+  //Get new product form
 
   exports.addProduct = async (req, res) => {
 
@@ -74,7 +74,7 @@ exports.homepage = async (req, res) => {
   };
 
   
-  //Post  create new customer
+  //Post  create new product
 
   exports.postProduct = async (req, res) => {
     console.log(req.body);
@@ -92,7 +92,7 @@ exports.homepage = async (req, res) => {
 
       try {
         await Product.create(newProduct);
-        await req.flash("info", "New Product has been added.");
+        await req.flash("info", "محصول جدید با موفقیت افزوده شد.");
     
         res.redirect("/admin/product/");
       } catch (error) {
@@ -112,8 +112,8 @@ exports.homepage = async (req, res) => {
       const product = await Product.findOne({ _id: req.params.id });
   
       const locals = {
-        title: "View product Data",
-        description: "Free NodeJs User Management System",
+        title: 'IE Project',
+        description: 'NodeJs project'
       };
   
       res.render("product/view", {
@@ -138,8 +138,8 @@ exports.edit = async (req, res) => {
     .exec();
 
     const locals = {
-      title: "Edit product Data",
-      description: "Free NodeJs User Management System",
+      title: 'IE Project',
+        description: 'NodeJs project'
     };
 
     res.render("product/edit", {
@@ -154,7 +154,7 @@ exports.edit = async (req, res) => {
 
 /**
  * GET /
- * Update Customer Data
+ * Update product Data
  */
 exports.editPost = async (req, res) => {
   try {
@@ -168,8 +168,8 @@ exports.editPost = async (req, res) => {
       PictureTitle: req.body.picturetitle,
       updatedAt: Date.now(),
     });
+    await req.flash("info", "محصول با موفقیت آپدیت شد!");
     await res.redirect("/admin/product/");
-    // await res.redirect(`/edit/${req.params.id}`);
 
     console.log("redirected");
   } catch (error) {
@@ -182,6 +182,7 @@ exports.editPost = async (req, res) => {
 exports.deleteProduct = async (req, res) => {
   try {
     await Product.deleteOne({ _id: req.params.id });
+    await req.flash("info", "محصول با موفقیت حذف شد!");
     res.redirect("/admin/product/");
   } catch (error) {
     console.log(error);
@@ -192,26 +193,19 @@ exports.deleteProduct = async (req, res) => {
 
 /**
  * Get /
- * Search Customer Data
+ * Search product Data
  */
 exports.searchProduct = async (req, res) => {
   const locals = {
-    title: "Search product Data",
-    description: "Free NodeJs User Management System",
+    title: "جستجو",
+    description: 'NodeJs project'
   };
 
   try {
-    let searchTerm = req.body.searchTerm;
-    const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "");
+    let searchTerm = req.body.searchTerm;  
+    const product = await Product.find({ Name: searchTerm });
 
-    const product = await Product.find({
-      $or: [
-        { firstName: { $regex: new RegExp(searchNoSpecialChar, "i") } },
-        { lastName: { $regex: new RegExp(searchNoSpecialChar, "i") } },
-      ],
-    });
-
-    res.render("search", {
+    res.render("product/search", {
       product,
       locals,
     });
@@ -219,3 +213,4 @@ exports.searchProduct = async (req, res) => {
     console.log(error);
   }
 };
+

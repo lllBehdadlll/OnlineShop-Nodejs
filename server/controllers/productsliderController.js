@@ -88,7 +88,7 @@ exports.homepage = async (req, res) => {
 
       try {
         await Productslider.create(newProductslider);
-        await req.flash("info", "New productslider has been added.");
+        await req.flash("info", "اسلایدر جدید افزوده شد");
     
         res.redirect("/admin/productslider/");
       } catch (error) {
@@ -109,7 +109,7 @@ exports.homepage = async (req, res) => {
   
       const locals = {
         title: "View productslider Data",
-        description: "Free NodeJs User Management System",
+        description: 'NodeJs project'
       };
   
       res.render("productslider/view", {
@@ -135,7 +135,7 @@ exports.edit = async (req, res) => {
 
     const locals = {
       title: "Edit productslider Data",
-      description: "Free NodeJs User Management System",
+      description: 'NodeJs project'
     };
 
     res.render("productslider/edit", {
@@ -149,8 +149,8 @@ exports.edit = async (req, res) => {
 };
 
 /**
- * GET /
- * Update Customer Data
+ * post /
+ * Update Productslider Data
  */
 exports.editPost = async (req, res) => {
   try {
@@ -160,8 +160,8 @@ exports.editPost = async (req, res) => {
       Category: req.body.category,
       updatedAt: Date.now(),
     });
+    await req.flash("info", "اسلایدر بروزرسانی شد");
     await res.redirect("/admin/productslider/");
-    // await res.redirect(`/edit/${req.params.id}`);
 
     console.log("redirected");
   } catch (error) {
@@ -174,6 +174,7 @@ exports.editPost = async (req, res) => {
 exports.deleteProductslider = async (req, res) => {
   try {
     await Productslider.deleteOne({ _id: req.params.id });
+    await req.flash("info", "اسلایدر  حذف شد");
     res.redirect("/admin/productslider/");
   } catch (error) {
     console.log(error);
@@ -188,22 +189,15 @@ exports.deleteProductslider = async (req, res) => {
  */
 exports.searchProductslider = async (req, res) => {
   const locals = {
-    title: "Search productslider Data",
-    description: "Free NodeJs User Management System",
+    title: "جستجو",
+    description: 'NodeJs project'
   };
 
   try {
-    let searchTerm = req.body.searchTerm;
-    const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "");
+    let searchTerm = req.body.searchTerm;  
+    const productslider = await Productslider.find({ Name: searchTerm });
 
-    const productslider = await Productslider.find({
-      $or: [
-        { firstName: { $regex: new RegExp(searchNoSpecialChar, "i") } },
-        { lastName: { $regex: new RegExp(searchNoSpecialChar, "i") } },
-      ],
-    });
-
-    res.render("search", {
+    res.render("product/search", {
       productslider,
       locals,
     });

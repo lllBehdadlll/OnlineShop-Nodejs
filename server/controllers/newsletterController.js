@@ -84,21 +84,15 @@ exports.deleteNewsletter = async (req, res) => {
  */
 exports.searchNewsletter = async (req, res) => {
   const locals = {
-    title: "Search newsletter Data",
+    title: "Search Customer Data",
     description: "Free NodeJs User Management System",
   };
 
   try {
-    let searchTerm = req.body.searchTerm;
-    const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "");
+    let searchTerm = req.body.searchTerm;  
+    const newsletter = await Newsletter.find({ Email: searchTerm });
 
-    const newsletter = await Newsletter.find({
-      $or: [
-        { Email: { $regex: new RegExp(searchNoSpecialChar, "i") } },
-      ],
-    });
-
-    res.render("search", {
+    res.render("newsletter/search", {
       newsletter,
       locals,
     });
@@ -106,6 +100,7 @@ exports.searchNewsletter = async (req, res) => {
     console.log(error);
   }
 };
+
 
 
 
