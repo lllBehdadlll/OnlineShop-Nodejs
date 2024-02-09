@@ -18,16 +18,18 @@ exports.homepage = async (req, res) => {
 
 
     try {
-      const products = await Product.findOne({ _id: req.params.id });
+      const category = await Category.findOne({ _id: req.params.id });
+      const products = await Product.aggregate([{ $sort: { createdAt: -1 } }])
+      .exec();
       const categories = await Category.aggregate([{ $sort: { createdAt: -1 } }])
       .exec();
 
-
   
-        res.render("productpage", {
+        res.render("categorypage", {
       locals,
-      categories,
       products,
+      category,
+      categories,
       messages,
     });
 

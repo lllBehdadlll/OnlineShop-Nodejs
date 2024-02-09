@@ -34,9 +34,9 @@ app.use(
 app.use(flash({ sessionKeyName: 'flashMessage' }));
 
 
-
 app.use('/', require('./server/routes/shop'))
 app.use('/productpage', require('./server/routes/productpage'))
+app.use('/categorypage', require('./server/routes/categorypage'))
 
 // // Templating Engine
 app.use(expressLayout);

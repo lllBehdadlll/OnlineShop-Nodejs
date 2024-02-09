@@ -42,7 +42,7 @@
                                             <% categories.forEach(element => { %>
                                             
                                                 <li>
-                                                    <a href="#" ><%= element.Name %></a>
+                                                    <a href="/categorypage/<%= element._id %>" ><%= element.Name %></a>
                                                 </li>
             
                                                 <% }) %>
@@ -56,6 +56,10 @@
 
                                     <li>
                                         <a href="#">ارتباط با ما</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="/admin">پنل مدیریت</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -89,14 +93,7 @@
                                 <div class="mobile-navigation text-right">
                                     <div class="header-icon-wrapper">
                                         <ul class="icon-list justify-content-end">
-                                            <li>
-                                                <div class="header-cart-icon">
-                                                    <a href="#">
-                                                        <i class="ion-bag"></i>
-                                                        <span class="counter">3</span>
-                                                    </a>
-                                                </div>
-                                            </li>
+                                           
                                             <li>
                                                 <a href="javascript:void(0)" class="mobile-menu-icon"
                                                     id="mobile-menu-trigger">
@@ -206,13 +203,13 @@
     
                                     <div class="single-category-item">
                                         <div class="single-category-item__image">
-                                            <a href="#">
+                                            <a href="/categorypage/<%= element._id %>">
                                                 <img src="<%= element.Picture %>" class="img-fluid" alt="<%= element.PictureAlt %>" title="<%= element.PictureTitle %>">
                                             </a>
                                         </div>
                                         <div class="single-category-item__content">
                                             <h3 class="title"><%= element.Name %></h3>
-                                            <a href="#">
+                                            <a href="/categorypage/<%= element._id %>">
                                                 <i class="ion-android-arrow-dropleft-circle"></i> خرید
                                             </a>
                                         </div>
@@ -572,7 +569,7 @@
                 <nav class="offcanvas-navigation">
                     <ul>
                         <li class="menu-item-has-children">
-                            <a href="#">صفحه اصلی</a>
+                            <a href="/">صفحه اصلی</a>
                             
                         </li>
 
@@ -582,7 +579,7 @@
                                 <% categories.forEach(element => { %>
                                 
                                     <li>
-                                        <a href="#" ><%= element.Name %></a>
+                                        <a href="/categorypage/<%= element._id %>" ><%= element.Name %></a>
                                     </li>
 
                                     <% }) %>
@@ -590,6 +587,11 @@
                              
                                
                             </ul>
+                        </li>
+
+
+                        <li>
+                            <a href="/admin">پنل مدیریت</a>
                         </li>
 
 

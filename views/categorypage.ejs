@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= category.Name %></title>
+
+    <!-- Vendor CSS -->
+    <link href="../assets/css/vendors.css" rel="stylesheet">
+    <!-- Main CSS -->
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../assets/css/Custom.css" rel="stylesheet">
+</head>
+
+<body>
+<!--====================  header area ====================-->
+<div class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!--=======  header wrapper  =======-->
+                <div class="header-wrapper d-none d-lg-flex">
+                    <!-- logo -->
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="assets/img/logo.png" class="img-fluid" alt="">
+                        </a>
+                    </div>
+                    <!-- menu wrapper -->
+                    <div class="navigation-menu-wrapper">
+                        <nav>
+                            <ul>
+                                <li>
+                                    <a href="/">صفحه اصلی</a>
+                                </li>
+
+                                <li class="menu-item-has-children">
+                                    <a href="#">محصولات</a>
+                                    <ul class="sub-menu">
+                                        <% categories.forEach(element => { %>
+                                        
+                                            <li>
+                                                <a href="/categorypage/<%= element._id %>" ><%= element.Name %></a>
+                                            </li>
+        
+                                            <% }) %>
+                                        
+                                     
+                                       
+                                    </ul>
+                                </li>
+
+
+
+                                <li>
+                                    <a href="#">ارتباط با ما</a>
+                                </li>
+
+                                <li>
+                                    <a href="/admin">پنل مدیریت</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- header icon -->
+                    <div class="header-icon-wrapper">
+                        <ul class="icon-list">
+                            <li>
+                                <a href="javascript:void(0)" id="search-overlay-trigger">
+                                    <i class="ion-ios-search-strong"></i>
+                                </a>
+                            </li>
+     
+                   
+                        </ul>
+                    </div>
+                </div>
+                <!--=======  End of header wrapper  =======-->
+                <!--=======  mobile navigation area  =======-->
+
+                <div class="header-mobile-navigation d-block d-lg-none">
+                    <div class="row align-items-center">
+                        <div class="col-6 col-md-6">
+                            <div class="header-logo">
+                                <a href="#">
+                                    <img src="assets/img/logo.png" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-6">
+                            <div class="mobile-navigation text-right">
+                                <div class="header-icon-wrapper">
+                                    <ul class="icon-list justify-content-end">
+                                       
+                                        <li>
+                                            <a href="javascript:void(0)" class="mobile-menu-icon"
+                                                id="mobile-menu-trigger">
+                                                <i class="fa fa-bars"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--=======  End of mobile navigation area  =======-->
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--====================  End of header area  ====================-->
+
+<div class="breadcrumb-area section-space--half">
+    <div class="container wide">
+        <div class="row">
+            <div class="col-lg-12">
+                <!--=======  breadcrumb wrpapper  =======-->
+                <div class="breadcrumb-wrapper breadcrumb-bg">
+                    <!--=======  breadcrumb content  =======-->
+                    <div class="breadcrumb-content">
+                        <h2 class="breadcrumb-content__title"><%= category.Name %></h2>
+                        <ul class="breadcrumb-content__page-map">
+                            <li>
+                                <a href="/">صفحه اصلی</a>
+                            </li>
+                            <li class="active"><%= category.Name %></li>
+                        </ul>
+                    </div>
+                    <!--=======  End of breadcrumb content  =======-->
+                </div>
+                <!--=======  End of breadcrumb wrpapper  =======-->
+            </div>
+        </div>
+    </div>
+</div>
+<!--====================  End of breadcrumb area  ====================-->
+<div class="page-content-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!--=======  shop page wrapper  =======-->
+                <div class="page-wrapper">
+                    <div class="page-content-wrapper">
+                        <div class="row">
+
+
+                            <div class="col-lg-12">
+                                <!--=======  shop page content  =======-->
+                                <div class="shop-page-content">
+
+                                    <div class="row shop-product-wrap grid three-column">
+                                        <% products.forEach(element => { %>
+                                            <% if(element.Category==category.Name){ %>
+
+                                        <div class="col-12 col-lg-4 col-md-4 col-sm-6">
+                                            <!--=======  product grid view  =======-->
+                                            <div class="single-grid-product grid-view-product">
+                                                <div class="single-grid-product__image">
+                                                    <a href="/productpage/<%= element._id %>">
+                                                        <img src="<%= element.Picture %>" class="img-fluid"
+                                                            alt="<%= element.PictureAlt %>" title="<%= element.PictureTitle %>">
+
+                                                    </a>
+
+                                                </div>
+                                                <div class="single-grid-product__content">
+                                                    <div class="single-grid-product__category-rating">
+                                                        <span class="category">
+                                                            <a href="#"><%= element.Category %></a>
+                                                        </span>
+                                                        <span class="rating">
+                                                            <i class="ion-android-star active"></i>
+                                                            <i class="ion-android-star active"></i>
+                                                            <i class="ion-android-star active"></i>
+                                                            <i class="ion-android-star active"></i>
+                                                            <i class="ion-android-star-outline"></i>
+                                                        </span>
+                                                    </div>
+
+                                                    <h3 class="single-grid-product__title">
+                                                        <a href="/productpage/<%= element._id %>"><%= element.Name %></a>
+                                                    </h3>
+                                                    <p class="single-grid-product__price">
+                                                         <span class="main-price"><%= element.Price %> تومان</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <!--=======  End of product grid view  =======-->
+
+                                        </div>
+                                        <% } %>
+                                        <% }) %>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!--=======  End of shop page content  =======-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--=======  End of shop page wrapper  =======-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!--====================  footer area ====================-->
+    <div class="footer-area">
+        <div class="footer-copyright">
+            <div class="container wide">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer-copyright-wrapper footer-copyright-wrapper--default-footer">
+                            <div class="container">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col-lg-2 col-md-2">
+                                        <div class="footer-logo">
+                                            <a href="#">
+                                                <img src="../assets/img/logo.png" class="img-fluid" alt="">
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-7 col-md-5">
+
+                                        <div class="copyright-text">
+
+                                            تمامی حقوق این وبسایت مطعلق به بهداد بهرام آبادیان میباشد.
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-5">
+                                        <div class="copyright-social-wrapper">
+                                            <ul class="copyright-social">
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="fa fa-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="fa fa-google-plus"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="fa fa-youtube"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--====================  End of footer area  ====================-->
+    <div class="offcanvas-mobile-menu" id="offcanvas-mobile-menu">
+        <a href="javascript:void(0)" class="offcanvas-menu-close" id="offcanvas-menu-close-trigger">
+            <i class="ion-android-close"></i>
+        </a>
+
+        <div class="offcanvas-wrapper">
+
+            <div class="offcanvas-inner-content">
+                <div class="offcanvas-mobile-search-area">
+
+                </div>
+                <nav class="offcanvas-navigation">
+                    <ul>
+                        <li class="menu-item-has-children">
+                            <a href="#">صفحه اصلی</a>
+                            
+                        </li>
+
+                        <li class="menu-item-has-children">
+                            <a href="#">محصولات</a>
+                            <ul class="sub-menu">
+                                <% categories.forEach(element => { %>
+                                
+                                    <li>
+                                        <a href="#" ><%= element.Name %></a>
+                                    </li>
+
+                                    <% }) %>
+                                
+                             
+                               
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                </nav>
+
+                <div class="offcanvas-settings">
+                    <nav class="offcanvas-navigation">
+                        <ul>
+               
+           
+                           
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="offcanvas-widget-area">
+
+                    <!--Off Canvas Widget Social Start-->
+                    <div class="off-canvas-widget-social">
+                        <a href="#" title="Facebook">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a href="#" title="Twitter">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a href="#" title="LinkedIn">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                        <a href="#" title="Youtube">
+                            <i class="fa fa-youtube-play"></i>
+                        </a>
+                        <a href="#" title="Vimeo">
+                            <i class="fa fa-vimeo-square"></i>
+                        </a>
+                    </div>
+                    <!--Off Canvas Widget Social End-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    </div>
+
+
+    <!-- scroll to top  -->
+    <div id="scroll-top">
+        <span>ابتدا صفحه</span><i class="ion-chevron-right"></i><i class="ion-chevron-right"></i>
+    </div>
+    <!-- end of scroll to top -->
+    <!-- Vendor JS -->
+    <script src="../assets/js/vendors.js"></script>
+
+    <!-- Active JS -->
+    <script src="../assets/js/active.js"></script>
+
+</body>
+
+</html>

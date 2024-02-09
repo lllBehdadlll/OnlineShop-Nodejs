@@ -1,3 +1,5 @@
+const nodemailer = require('nodemailer');
+
 const Newsletter = require("../models/Newsletter");
 const mongoose = require("mongoose");
 
@@ -92,8 +94,7 @@ exports.searchNewsletter = async (req, res) => {
 
     const newsletter = await Newsletter.find({
       $or: [
-        { firstName: { $regex: new RegExp(searchNoSpecialChar, "i") } },
-        { lastName: { $regex: new RegExp(searchNoSpecialChar, "i") } },
+        { Email: { $regex: new RegExp(searchNoSpecialChar, "i") } },
       ],
     });
 
@@ -104,4 +105,74 @@ exports.searchNewsletter = async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+
+
+exports.sendtoall = async (req, res) => {
+
+
+  const local ={
+
+      title: 'افزودن کاربر',
+      description: 'NodeJs project'
+  }
+
+res.render('newsletter/sendtoall', local);
+
+
+};
+
+
+//Post  create new customer
+
+exports.postSendtoall = async (req, res) => {
+  console.log(req.body);
+
+
+  const subject = req.body.subject;
+  const text = req.body.details;
+  const newsletter = await Newsletter.aggregate([{ $sort: { createdAt: -1 } }])
+      .exec();
+
+
+      
+    try {
+
+      newsletter.forEach(element => {
+        var transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: 'btestfornodejs@gmail.com',
+            pass: 'ewyvubaxgosthylt'
+          }
+        });
+      
+        var mailOptions = {
+          from: 'btestfornodejs@gmail.com',
+          to: element.Email,
+          subject: subject,
+          text: text
+        }
+  
+        transporter.sendMail(mailOptions, function(error, info){
+          if (error) {
+            console.log(error);
+          } else {
+            console.log('Email sent: ' + info.response);
+          }
+        });
+      });
+
+
+      await req.flash("info", "ایمیل با موفقیت برای همه مشترکان ارسال شد");
+  
+      res.redirect("/admin/newsletter/");
+    } catch (error) {
+      console.log(error);
+    }
+
+
+
+
 };
